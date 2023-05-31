@@ -10,23 +10,20 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-const MovieCard = () => {
+const MovieCard = ({ movie }: any = {}) => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Create project</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
+        <img
+          className="w-50"
+          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          alt={movie.title}
+        />
+        <CardTitle className="!mt-5">{movie.title}</CardTitle>
+        <CardDescription>{movie.release_date}</CardDescription>
       </CardHeader>
-      <CardContent>
-        <form>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5"></div>
-            <div className="flex flex-col space-y-1.5"></div>
-          </div>
-        </form>
-      </CardContent>
       <CardFooter className="flex justify-between">
-        <Button>Cancel</Button>
+        <Button>Add to watch list</Button>
       </CardFooter>
     </Card>
   )
