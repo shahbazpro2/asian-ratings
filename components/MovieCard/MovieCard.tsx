@@ -1,9 +1,10 @@
 "use client"
 
+import Image from "next/image"
+
 import { Button } from "@/components/ui/button"
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -14,10 +15,12 @@ const MovieCard = ({ movie }: any = {}) => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <img
+        <Image
           className="w-50"
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt={movie.title}
+          width={500}
+          height={100}
         />
         <CardTitle className="!mt-5">{movie.title}</CardTitle>
         <CardDescription>{movie.release_date}</CardDescription>
