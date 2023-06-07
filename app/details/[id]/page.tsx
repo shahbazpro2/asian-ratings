@@ -1,6 +1,6 @@
 import Details from "@/components/Detail/Detail"
 
-async function getData(id) {
+async function getData(id: string) {
   const options = {
     method: "GET",
     headers: {
@@ -26,7 +26,7 @@ async function getData(id) {
   return res.json()
 }
 
-export default async function Page({ params }) {
+export default async function Page({ params }: any) {
   const id = params.id
   const movie = await getData(id)
 
