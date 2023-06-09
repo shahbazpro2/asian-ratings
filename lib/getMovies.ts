@@ -42,4 +42,20 @@ async function getMovieDetail(id: string) {
   return res.json()
 }
 
-export { getMovies, getMovieDetail }
+// const api = 'feb6f0eeaa0a72662967d77079850353';
+// const endpoint = `https://api.themoviedb.org/3/search/movie?query=${search}${api}`;
+
+async function search(query: string) {
+  const res = await fetch(``, {
+    cache: "no-cache",
+    ...options,
+  })
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data")
+  }
+
+  return res.json()
+}
+
+export { getMovies, getMovieDetail, search }
