@@ -1,5 +1,6 @@
 import { getMovies } from "@/lib/getMovies"
 import MovieList from "@/components/MovieList/MovieList"
+import SearchForm from "@/components/SearchForm/SearchForm"
 
 export default async function IndexPage() {
   const movies = await getMovies()
@@ -15,6 +16,7 @@ export default async function IndexPage() {
           Welcome to The Asian Rating, the go-to website for all your movie and
           TV show rating needs!
         </p>
+        <SearchForm />
         <MovieList movies={movies.results} />
       </div>
     </section>

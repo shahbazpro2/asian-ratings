@@ -6,8 +6,6 @@ export default async function Page({ params }: any) {
   const searchResults = await search(query)
   const { results } = searchResults
 
-  console.log(results)
-
   const renderResults = () => {
     return (
       <>
@@ -24,11 +22,20 @@ export default async function Page({ params }: any) {
     )
   }
 
+  const noResultsFound = () => {
+    return (
+      <>
+        <h1 className="text-center text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
+          {`Sorry, we can't find any results for "${query}"`}
+        </h1>
+        <p className="text-center text-3xl ">Please search again</p>
+      </>
+    )
+  }
+
   return (
     <section className="container grid items-center gap-6 bg-auto bg-center bg-no-repeat pb-8 pt-6 md:py-10">
-      {results.length === 0
-        ? `Sorry, we can't find any results for ${query}`
-        : renderResults()}
+      {results.length === 0 ? noResultsFound() : renderResults()}
     </section>
   )
 }
