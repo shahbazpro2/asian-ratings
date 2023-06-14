@@ -3,7 +3,8 @@ import Details from "@/components/Detail/Detail"
 
 export default async function Page({ params }: any) {
   const id = params.id
-  const movie = await getMovieDetail(id)
+  // const movie = await getMovieDetail(id)
 
-  return <Details movie={movie} />
+  // return <Details movie={movie} />
+  return "search"
 }
