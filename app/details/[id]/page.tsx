@@ -1,4 +1,4 @@
-import { getMovieDetail } from "@/lib/getMovies"
+import { getMovieDetail } from "@/lib/fetchData"
 import Details from "@/components/Detail/Detail"
 
 export default async function Page({ params }: any) {

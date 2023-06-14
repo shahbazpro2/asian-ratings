@@ -1,4 +1,4 @@
-import { search } from "@/lib/getMovies"
+import { search } from "@/lib/fetchData"
 import Card from "@/components/Card/Card"
 
 export default async function Page({ params }: any) {

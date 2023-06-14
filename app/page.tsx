@@ -1,9 +1,10 @@
-import { getMovies } from "@/lib/getMovies"
+import { getTrendingMovies, getTrendingTvShows } from "@/lib/fetchData"
 import MovieList from "@/components/MovieList/MovieList"
 import SearchForm from "@/components/SearchForm/SearchForm"
 
 export default async function IndexPage() {
-  const movies = await getMovies()
+  const movies = await getTrendingMovies()
+  const tvShows = await getTrendingTvShows()
 
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
@@ -17,7 +18,14 @@ export default async function IndexPage() {
           TV show rating needs!
         </p>
         <SearchForm />
+        <h2 className="my-4 text-2xl font-extrabold leading-tight md:text-3xl">
+          Trending Movies
+        </h2>
         <MovieList movies={movies.results} />
+        <h2 className="my-4 text-2xl font-extrabold leading-tight md:text-3xl">
+          Trending TV Shows
+        </h2>
+        <MovieList movies={tvShows.results} />
       </div>
     </section>
   )
