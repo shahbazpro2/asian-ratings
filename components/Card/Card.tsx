@@ -2,34 +2,34 @@ import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
 import {
-  Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
+  Card as CardUI,
 } from "@/components/ui/card"
 
-const MovieCard = ({ movie }: any = {}) => {
+const Card = ({ data }: any = {}) => {
   return (
-    <a href={`/details/${movie.id}`}>
-      <Card className="w-full">
+    <a href={`/details/${data.id}`}>
+      <CardUI className="w-full">
         <CardHeader>
           <Image
             className="w-50"
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt={movie.title}
+            src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
+            alt={data.title}
             width={500}
             height={100}
           />
-          <CardTitle className="!mt-5">{movie.title}</CardTitle>
-          <CardDescription>{movie.release_date}</CardDescription>
+          <CardTitle className="!mt-5">{data.title}</CardTitle>
+          <CardDescription>{data.release_date}</CardDescription>
         </CardHeader>
         <CardFooter className="flex justify-between">
           <Button>Add to watch list</Button>
         </CardFooter>
-      </Card>
+      </CardUI>
     </a>
   )
 }
 
-export default MovieCard
+export default Card

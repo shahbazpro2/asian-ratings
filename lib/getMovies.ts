@@ -46,10 +46,13 @@ async function getMovieDetail(id: string) {
 // const endpoint = `https://api.themoviedb.org/3/search/movie?query=${search}${api}`;
 
 async function search(query: string) {
-  const res = await fetch(``, {
-    cache: "no-cache",
-    ...options,
-  })
+  const res = await fetch(
+    `https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=false&language=en-US&page=1`,
+    {
+      cache: "no-cache",
+      ...options,
+    }
+  )
 
   if (!res.ok) {
     throw new Error("Failed to fetch data")

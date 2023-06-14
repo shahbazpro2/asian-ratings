@@ -1,4 +1,4 @@
-import MovieCard from "../MovieCard/MovieCard"
+import Card from "../Card/Card"
 
 export default function MovieList({ movies }: any) {
   return (
@@ -9,7 +9,7 @@ export default function MovieList({ movies }: any) {
       <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
         {movies.length > 0 &&
           movies.map((movie: any) => {
-            return <MovieCard movie={movie} />
+            return <Card data={movie} />
           })}
       </div>
     </>
