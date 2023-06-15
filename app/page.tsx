@@ -3,8 +3,17 @@ import MovieList from "@/components/MovieList/MovieList"
 import SearchForm from "@/components/SearchForm/SearchForm"
 
 export default async function IndexPage() {
-  const movies = await getTrendingMovies()
-  const tvShows = await getTrendingTvShows()
+  const responses = await Promise.allSettled([
+    getTrendingMovies(),
+    getTrendingTvShows(),
+  ])
+
+  const [moviesData, tvShowsData] = responses.filter(
+    (response) => response.status === "fulfilled"
+  ) as PromiseFulfilledResult<any>[]
+
+  const movies = moviesData.value || []
+  const tvShows = tvShowsData.value || []
 
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
