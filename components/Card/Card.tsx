@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -11,7 +12,12 @@ import {
 
 const Card = ({ data }: any = {}) => {
   return (
-    <a href={`/details/${data.id}`}>
+    <Link
+      href={{
+        pathname: `/details/${data.id}`,
+        query: { type: data.media_type },
+      }}
+    >
       <CardUI className="w-full">
         <CardHeader>
           <Image
@@ -28,7 +34,7 @@ const Card = ({ data }: any = {}) => {
           <Button>Add to watch list</Button>
         </CardFooter>
       </CardUI>
-    </a>
+    </Link>
   )
 }
 

@@ -3,17 +3,14 @@ import MovieList from "@/components/MovieList/MovieList"
 import SearchForm from "@/components/SearchForm/SearchForm"
 
 export default async function IndexPage() {
-  const responses = await Promise.allSettled([
-    getTrendingMovies(),
-    getTrendingTvShows(),
-  ])
+  await new Promise((resolve) => setTimeout(resolve, 3000))
 
-  const [moviesData, tvShowsData] = responses.filter(
-    (response) => response.status === "fulfilled"
-  ) as PromiseFulfilledResult<any>[]
+  // Initiate both requests in parallel
+  const moviesData = getTrendingMovies()
+  const tvShowsData = getTrendingTvShows()
 
-  const movies = moviesData.value || []
-  const tvShows = tvShowsData.value || []
+  // Wait for the promises to resolve
+  const [movies, tvShows] = await Promise.all([moviesData, tvShowsData])
 
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
@@ -30,11 +27,11 @@ export default async function IndexPage() {
         <h2 className="my-4 text-2xl font-extrabold leading-tight md:text-3xl">
           Trending Movies
         </h2>
-        <MovieList movies={movies.results} />
+        <MovieList data={movies} />
         <h2 className="my-4 text-2xl font-extrabold leading-tight md:text-3xl">
           Trending TV Shows
         </h2>
-        <MovieList movies={tvShows.results} />
+        <MovieList data={tvShows} />
       </div>
     </section>
   )
