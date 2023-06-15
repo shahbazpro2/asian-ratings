@@ -26,7 +26,7 @@ export default async function Page({ params }: any) {
     return (
       <>
         <h1 className="text-center text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-          {`Sorry, we can't find any results for "${query}"`}
+          {`Sorry, we can't find any results for "${decodeURI(query)}"`}
         </h1>
         <p className="text-center text-3xl ">Please search again</p>
       </>
