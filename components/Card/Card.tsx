@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/card"
 
 const Card = ({ data }: any = {}) => {
+  const hasImage = data.poster_path !== null
+  //                 `https://placehold.co/300x400?text=${data.original_name}`
   return (
     <Link
       href={{
@@ -24,11 +26,12 @@ const Card = ({ data }: any = {}) => {
             className="w-50"
             src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
             alt={data.title}
-            width={500}
-            height={100}
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "400px", height: "auto" }} // optional
           />
-          <CardTitle className="!mt-5">{data.title}</CardTitle>
-          <CardDescription>{data.release_date}</CardDescription>
+          <CardTitle className="!mt-5">{data.name}</CardTitle>
         </CardHeader>
         <CardFooter className="flex justify-between">
           <Button>Add to watch list</Button>

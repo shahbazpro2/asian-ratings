@@ -1,4 +1,5 @@
 import {
+  ArrowRight,
   LucideProps,
   Moon,
   SunMedium,
@@ -28,4 +29,5 @@ export const Icons = {
       ></path>
     </svg>
   ),
+  arrowRight: ArrowRight,
 }

@@ -1,9 +1,9 @@
-import { search } from "@/lib/fetchData"
+import { searchTvShow } from "@/lib/fetchData"
 import Card from "@/components/Card/Card"
 
 export default async function Page({ params }: any) {
   const query = params.query
-  const searchResults = await search(query)
+  const searchResults = await searchTvShow(query)
   const { results } = searchResults
 
   const renderResults = () => {
