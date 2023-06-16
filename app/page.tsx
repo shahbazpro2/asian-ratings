@@ -10,6 +10,8 @@ export default async function IndexPage() {
   // const moviesData = getTrendingMovies()
   const tvShowsData = getTrendingTvShows()
 
+
+
   // Wait for the promises to resolve
   const [tvShows] = await Promise.all([tvShowsData])
 
