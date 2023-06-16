@@ -1,17 +1,9 @@
-import { getTrendingTvShows } from "@/lib/fetchData"
 import { Skeleton } from "@/components/ui/skeleton"
-import Card from "@/components/Card/Card"
-import SearchForm from "@/components/SearchForm/SearchForm"
 
-export default async function IndexPage() {
-  await new Promise((resolve) => setTimeout(resolve, 3000))
+const loading = () => {
+  const arrayEmpty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
-  // Initiate both requests in parallel
-  // const moviesData = getTrendingMovies()
-  const tvShowsData = getTrendingTvShows()
-
-  // Wait for the promises to resolve
-  const [tvShows] = await Promise.all([tvShowsData])
+  console.log(arrayEmpty)
 
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
@@ -24,17 +16,20 @@ export default async function IndexPage() {
           Welcome to The Asian Rating, the go-to website for all your movie and
           TV show rating needs!
         </p>
-        <SearchForm />
+        {/* <SearchForm /> */}
+        <Skeleton className="h-[40px] w-[300px] rounded-full" />
+
         <h2 className="my-4 text-2xl font-extrabold leading-tight md:text-3xl">
           Trending TV Shows
         </h2>
         <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-          {tvShows.results.length > 0 &&
-            tvShows.results.map((tvShow: any) => {
-              return <Card data={tvShow} />
-            })}
+          {arrayEmpty.map((i) => {
+            return <Skeleton className="h-[400px] w-[300px]" />
+          })}
         </div>
       </div>
     </section>
   )
 }
+
+export default loading
